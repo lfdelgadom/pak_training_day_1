@@ -1,0 +1,57 @@
+---
+title: "CIP data dictionary"
+author: "CIP"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The CIP Data
+
+This project uses data from the [International Potato Center
+(CIP)](https://cipotato.org/):
+
+> The International Potato Center (CIP) was founded in 1971 as a
+> research-for-development organization with a focus on potato,
+> sweetpotato and Andean roots and tubers. It delivers innovative
+> science-based solutions to enhance access to affordable nutritious
+> food, foster inclusive sustainable business and employment growth, and
+> drive the climate resilience of root and tuber agri-food systems.
+> Headquartered in Lima, Peru, CIP has a research presence in more than
+> 20 countries in Africa, Asia and Latin America.
+
+> CIP is a CGIAR research center, a global research partnership for a
+> food-secure future. CGIAR science is dedicated to transforming food,
+> land and water systems in a climate crisis. Its research is carried
+> out by 13 CGIAR Centers/Alliances in close collaboration with hundreds
+> of partners, including national and regional research institutes,
+> civil society organizations, academia, development organizations and
+> the private sector.
+
+`CIP` contains identifying information for each experiment and
+field-based measurements of the plants.
+
+### Variables: `CIP.csv`
+
+-`trial`: Unique indicator for each combination of location, season,
+    and harvest
+-`type`: Indicates if the genotype planted is a variety or check
+-`season`: Indicates the planting season: 2019A or 2019B
+-`release`: Release year for the variety
+-`loc`: Locality name
+-`geno`: Genotype name
+-`harvest`: Number of days after planting
+-`rep`: Replication number. Corresponds to a complete block
+-`row`: Row position in the field
+-`column`: Column position in the field
+-`nops`: Number of plants planted per plot
+-`noph`: Number of plants harvested per plot
+-`vw`: Weight of vines per plot in kg
+-`nocr`: Number of commercial storage roots per plot
+-`crw`: Weight of commercial storage roots per plot in kg
+-`ncrw`: Weight of non-commercial storage roots per plot in kg
+-`trw`: Total storage root weight per plot in kg
+
