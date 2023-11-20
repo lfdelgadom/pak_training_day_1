@@ -18,6 +18,7 @@ rm(list = ls())
 help()
 help(sd) # Get help about the standard deviation function
 ?mean # Get help about the mean function
+sd(1:2) ^ 2
 ?round()
 
 help.search("regression")
@@ -108,6 +109,8 @@ x[5:8]
 # Accessing elements greater than 3
 x[x > 3]
 
+rm(list = ls())
+
 # Working with matrices
 x <- c(1, 2, 3, 4, 5, 6) # Numerical vector
 x1 <- c(1.2, 1.3, 1.8, 2.9, 10.5, 0.9) # Numerical vectors
@@ -157,27 +160,40 @@ snp_data %>% select(name, chr, pos) # Selecting specific columns: name, chr, and
 
 
 # Exercises
+
+x <- c(1, 2, 56, 78, 5, 47, 7, 8)
 # Access elements Less Than or Equal 70 in vector "x"
-# x[x  70]
+x[x <= 70]
 
 # Access elements not equal to 100
-# x[x  100]
+x[x != 100]
 
 # Access elements equal to 47
-# x[x  47]
+x[x ==  47]
 
 # Suppose you have a vector x with the following values: "A", "B", "A", "C", 
 # "A", "C". Convert this vector into a factor and store it in a variable fx. 
 # Then, create a frequency table for fx to count the occurrences of each factor level.
 
+x <- c("A", "B", "A", "C", "A", "C")
+class(x)
+fx <- factor(x)
+class(fx)
+
 # Consider the snp_data dataframe created in the code. Write R code to 
 # accomplish the following tasks:
   
   # a. Extract the rows from snp_data where the chromosome (chr) is equal to 2.
+#ctr + shift + m
+snp_data %>% filter(chr == 2) 
 
   # b. Extract the rows from snp_data where the chromosome (chr) is equal to 3 
   # and the position (pos) is equal to 150.
+snp_data %>% filter(chr == 3 & pos == 150)
 
   # c. Create a new dataframe snp_subset containing only the columns name, 
   # ind1, and ind2 from snp_data.
+
+snp_subset <- snp_data %>% select(ind1, ind2)
+snp_subset
 

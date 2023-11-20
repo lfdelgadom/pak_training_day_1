@@ -38,8 +38,12 @@ mean(CIP$crw, na.rm = TRUE)
 # Counting the number of occurrences per 'trial' and displaying distinct rows of 'trial', 'harvest', and count
 CIP %>%
   add_count(trial) %>%
-  select(trial, harvest, n) %>%
-  distinct()
+  select(trial, harvest, n) %>% 
+  distinct() %>% View()
+
+
+# convert release column into factor
+CIP$release <- factor(CIP$release)
 
 # Generating a summary of the 'CIP' dataset, including statistics for each variable
 summary(CIP)
@@ -93,7 +97,7 @@ ggplot(CIP, aes(x = trw)) +
   labs(title = "Histogram of Total Root Weight per Plot", x = "Total weight per plot")
 
 # Creating a faceted histogram of total root weight per plot for each trial using ggplot2
-ggplot(CIP, aes(x = trw)) +
+ggplot(CIP, aes(x = crw)) +
   facet_wrap(~trial) +
   geom_histogram(bins = 10, fill = "green", color = "black") +
   labs(title = "Faceted Histogram of Total Root Weight per Plot", x = "Total weight per plot")
@@ -104,21 +108,31 @@ ggplot(CIP, aes(x = geno, y = crw)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Boxplot of Commercial Root Weight by Genotype", y = "Commercial root weight")
 
+# Creating a boxplot of commercial root weight by genotype using ggplot2
+ggplot(CIP, aes(x = geno, y = crw)) +
+  facet_wrap(~trial) +
+  geom_boxplot(fill = "orange") +
+ #
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Boxplot of Commercial Root Weight by Genotype", y = "Commercial root weight")
+
+
+
 # Exercises: fix the following code (there are errors)
-ggplot(CP, aes(x = vw, y = nocr)) 
-  + geom_point() +
+ggplot(CIP, aes(x = vw, y = nocr)) +
+  geom_point() +
   labs(title = "Scatter Plot of Vine Weight vs Commercial Root Weight",
        x = "Weight of vines per plot (kg)", 
        y = "Weight of Commercial storage roots per plot (kg)")
 
 
-ggplot(CIP, aes(x = clone, y = trw)) +
-  geom_bar() +
+ggplot(CIP, aes(x = geno, y = trw)) +
+  geom_bar(stat = "summary") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = "Genotype", y = "Mean of total root weight per plot")
 
 ggplot(CIP, aes(x = trw)) +
-  geom_histogram(bins = -10, fill = "green", color = "black") +
+  geom_histogram(bins = 10, fill = "green", color = "black") +
   labs(title = "Histogram of trw", x = "Total weight per plot")
 
 
