@@ -14,7 +14,7 @@
 rm(list = ls())
 
 # Installing and loading necessary packages
-install.packages("pacman")
+# install.packages("pacman")
 library(pacman)
 pacman::p_load(tidyverse, readxl, statgenSTA, openxlsx, agriutilities, SpATS, ggsci)
 
@@ -37,6 +37,7 @@ sel_data <- read_cassavabase(phenotypeFile = paste0(folder, file))
 # Standardizing column names
 colnames(sel_data)
 sel_data_kp <- change_colname(sel_data, NA)
+colnames(sel_data_kp)
 
 # Adding suffix to metadata and trial data for differentiation
 obs_col <- c(
